@@ -28,6 +28,7 @@ the zero-dependency swiss-army-knife tool for building, testing, and deploying w
 [![apidoc](https://kaizhu256.github.io/node-utility2/build/screen-capture.buildApidoc.browser._2Fhome_2Ftravis_2Fbuild_2Fkaizhu256_2Fnode-utility2_2Ftmp_2Fbuild_2Fapidoc.html.png)](https://kaizhu256.github.io/node-utility2/build..beta..travis-ci.org/apidoc.html)
 
 #### todo
+- npm publish 2017.3.22
 - rename sub-package db-lite -> nedb-lite
 - rename sub-package istanbul-lite -> istanbul-classic
 - rename sub-package jslint-lite -> jslint-classic
@@ -39,23 +40,8 @@ the zero-dependency swiss-army-knife tool for building, testing, and deploying w
 - analytics
 - none
 
-#### changes for v2017.3.21
-- npm publish 2017.3.21
-- security - rewrite function moduleDirname, so that it doesn't have to require arbitrary modules
-- add github-crud command 'touch' to trigger github-hooks and add commit-messages without changing files
-- add commit-message-meta macro 'promote branch1 -> branch2'
-- add env var TRAVIS_REPO_CREATE_FORCE to force re-creation of npmdoc
-- add env var npm_package_buildNpmdocMain to customize npmdoc target
-- add optional commit-message for PUT, DELETE, and TOUCH requests in github-crud
-- add package-description to apidoc
-- add package-listing to npmdoc
-- add package.json to npmdoc
-- add async shell-function shNpmdocRepoListCreate to automate creation of npmdoc's
-- add shell function shUtility2GrepTravisYml
-- fix 'span class' error in https://www.npmjs.com/package/npmdoc-glob
-- merge function local.runIfTrue -> local.nop
-- rename lib.xxx.npm_scripts.sh to npm_scripts.sh
-- shBuildPrint message for deprecate and publish operations
+#### changes for v2017.3.22
+- fix apidoc bug 'Function.prototype.toString is not generic'
 - none
 
 #### this package requires
@@ -714,7 +700,7 @@ utility2-comment -->\n\
         "start": "(set -e; export PORT=${PORT:-8080}; if [ -f assets.app.js ]; then node assets.app.js; exit; fi; export npm_config_mode_auto_restart=1; ./lib.utility2.sh shRun shIstanbulCover test.js)",
         "test": "(set -e; export PORT=$(./lib.utility2.sh shServerPortRandom); export PORT_REPL=$(./lib.utility2.sh shServerPortRandom); export npm_config_mode_auto_restart=1; ./lib.utility2.sh test test.js)"
     },
-    "version": "2017.3.21"
+    "version": "2017.3.22"
 }
 ```
 
