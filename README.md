@@ -33,7 +33,6 @@ the zero-dependency swiss-army-knife tool for building, testing, and deploying w
 - rename sub-package istanbul-lite -> istanbul-classic
 - rename sub-package jslint-lite -> jslint-classic
 - use options remote credentials during travis-ci build
-- deprecate ssh-key in favor of github oauth - https://stackoverflow.com/questions/18027115/committing-via-travis-ci-failing
 - allow server-side stdout to be streamed to webapps
 - add utility2.middlewareLimit
 - add server stress test using electron
@@ -41,6 +40,7 @@ the zero-dependency swiss-army-knife tool for building, testing, and deploying w
 - none
 
 #### changes for v2017.3.22
+- deprecate ssh-key in favor of github oauth - https://stackoverflow.com/questions/18027115/committing-via-travis-ci-failing
 - fix apidoc bug 'Function.prototype.toString is not generic'
 - none
 
@@ -89,7 +89,7 @@ the zero-dependency swiss-army-knife tool for building, testing, and deploying w
 
 shExampleSh() {(set -e
     # npm install utility2
-    npm install utility2
+    npm install "kaizhu256/node-utility2#alpha"
     # serve a webpage that will interactively run browser-tests with coverage
     cd node_modules/utility2 && export PORT=8081 && npm start
 )}
@@ -118,7 +118,7 @@ this script will demo automated browser-tests with coverage (via electron and is
 instruction
     1. save this script as example.js
     2. run the shell command:
-        $ npm install electron-lite utility2 && \
+        $ npm install electron-lite "kaizhu256/node-utility2#alpha" && \
             PATH="$(pwd)/node_modules/.bin:$PATH" \
             PORT=8081 \
             npm_config_mode_coverage=utility2 \

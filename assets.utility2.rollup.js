@@ -514,7 +514,13 @@ local.templateApidocMd = '\
                     return element;
                 }
                 // init source
-                element.source = trimLeft(module[key].toString());
+                element.source = 'n/a';
+                // bug-workaround - catch and ignore error
+                // "Function.prototype.toString is not generic"
+                try {
+                    element.source = trimLeft(module[key].toString());
+                } catch (ignore) {
+                }
                 if (element.source.length > 4096) {
                     element.source = element.source.slice(0, 4096).trimRight() + ' ...';
                 }

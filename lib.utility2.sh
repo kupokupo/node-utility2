@@ -250,7 +250,7 @@ shBuildCi() {(set -e
     fi
     # restore $CI_BRANCH
     export CI_BRANCH="$CI_BRANCH_OLD"
-    if [ ! "$TRAVIS" ]
+    if ! ([ "$GITHUB_TOKEN" ] && [ "$TRAVIS" ])
     then
         return
     fi
@@ -258,60 +258,50 @@ shBuildCi() {(set -e
     alpha)
         case "$CI_COMMIT_MESSAGE_META" in
         "[promote alpha -> beta]")
-            shBuildScriptEval "githubPush" \
-                "git push -f git@github.com:$GITHUB_REPO.git HEAD:beta"
+            shGithubPush -f "https://github.com/$GITHUB_REPO.git" HEAD:beta
             ;;
         "[promote alpha -> beta -> master]")
-            shBuildScriptEval "githubPush" \
-                "git push -f git@github.com:$GITHUB_REPO.git HEAD:beta"
+            shGithubPush -f "https://github.com/$GITHUB_REPO.git" HEAD:beta
             ;;
         "[npm publish]")
-            shBuildScriptEval "githubPush" \
-                "git push git@github.com:$GITHUB_REPO.git HEAD:publish"
+            shGithubPush "https://github.com/$GITHUB_REPO.git" HEAD:publish
             ;;
         "[npmdoc build]")
             git add .
             shFilePackageJsonVersionIncrement
             git commit -am "[npmdoc publish]" || true
-            shBuildScriptEval "githubPush" \
-                "git push git@github.com:$GITHUB_REPO.git HEAD:alpha" || true
+            shGithubPush "https://github.com/$GITHUB_REPO.git" HEAD:alpha || true
             ;;
         "[npmdoc publish]")
             git add .
             shFilePackageJsonVersionIncrement
             git commit -am "$CI_COMMIT_MESSAGE" || true
-            shBuildScriptEval "githubPush" \
-                "git push -f git@github.com:$GITHUB_REPO.git HEAD:publish"
+            shGithubPush -f "https://github.com/$GITHUB_REPO.git" HEAD:publish
             ;;
         "[npmdoc test]")
             git add .
             shFilePackageJsonVersionIncrement
             git commit -am "[npmdoc tested]" || true
-            shBuildScriptEval "githubPush" \
-                "git push -f git@github.com:$GITHUB_REPO.git HEAD:alpha"
+            shGithubPush -f "https://github.com/$GITHUB_REPO.git" HEAD:alpha
             ;;
         esac
         ;;
     beta)
         case "$CI_COMMIT_MESSAGE_META" in
         "[promote alpha -> beta -> master]")
-            shBuildScriptEval "githubPush" \
-                "git push -f git@github.com:$GITHUB_REPO.git HEAD:master"
+            shGithubPush -f "https://github.com/$GITHUB_REPO.git" HEAD:master
             ;;
         "[promote beta -> master]")
-            shBuildScriptEval "githubPush" \
-                "git push -f git@github.com:$GITHUB_REPO.git HEAD:master"
+            shGithubPush -f "https://github.com/$GITHUB_REPO.git" HEAD:master
             ;;
         esac
         ;;
     master)
         git tag "$npm_package_version" || true
-        shBuildScriptEval "githubPush" \
-            "git push git@github.com:$GITHUB_REPO.git $npm_package_version" || true
+        shGithubPush "https://github.com/$GITHUB_REPO.git" "$npm_package_version" || true
         case "$CI_COMMIT_MESSAGE_META" in
         "[promote master -> alpha]")
-            shBuildScriptEval "githubPush" \
-                "git push -f git@github.com:$GITHUB_REPO.git HEAD:alpha"
+            shGithubPush -f "https://github.com/$GITHUB_REPO.git" HEAD:alpha
             ;;
         esac
         ;;
@@ -325,12 +315,10 @@ shBuildCi() {(set -e
 [$npm_package_name](https://www.npmjs.com/package/$npm_package_name)"
         case "$CI_COMMIT_MESSAGE_META" in
         "[npmdoc publish]")
-            shBuildScriptEval "githubPush" \
-                "git push -f git@github.com:$GITHUB_REPO.git HEAD:beta"
+            shGithubPush -f "https://github.com/$GITHUB_REPO.git" HEAD:beta
             ;;
         *)
-            shBuildScriptEval "githubPush" \
-                "git push git@github.com:$GITHUB_REPO.git HEAD:beta"
+            shGithubPush "https://github.com/$GITHUB_REPO.git" HEAD:beta
             ;;
         esac
         ;;
@@ -358,6 +346,10 @@ shBuildCiInternal() {(set -e
     fi
     # create recent changelog of last 50 commits
     (export MODE_BUILD=gitLog; shRunScreenCapture git log -50 --pretty="%ai\u000a%B")
+    if ! ([ "$GITHUB_TOKEN" ] && [ "$TRAVIS" ])
+    then
+        return
+    fi
     # run internal post-build
     if (type shBuildCiInternalPost > /dev/null 2>&1)
     then
@@ -370,16 +362,16 @@ shBuildCiInternal() {(set -e
 
 shBuildGithubUpload() {(set -e
 # this function will upload build-artifacts to github
-    if [ ! "$GIT_SSH" ]
+    if [ ! "$GITHUB_TOKEN" ]
     then
         return
     fi
     export MODE_BUILD=buildGithubUpload
     shBuildPrint "uploading build-artifacts to git@github.com:$GITHUB_REPO.git"
-    REPO="git@github.com:$GITHUB_REPO.git"
+    URL="https://github.com/$GITHUB_REPO.git"
     # init /tmp/buildGithubUpload
     rm -fr /tmp/buildGithubUpload
-    git clone "$REPO" --single-branch -b gh-pages /tmp/buildGithubUpload
+    git clone "$URL" --single-branch -b gh-pages /tmp/buildGithubUpload
     cd /tmp/buildGithubUpload
     case "$CI_COMMIT_MESSAGE_META" in
     "[build clean]")
@@ -400,10 +392,10 @@ shBuildGithubUpload() {(set -e
     # and then squash to $COMMIT_LIMIT/2 in git-repo-branch
     if [ "$COMMIT_LIMIT" ] && [ "$(git rev-list HEAD --count)" -gt "$COMMIT_LIMIT" ]
     then
-        shBuildScriptEval "githubPush" "git push -f $REPO gh-pages:gh-pages.backup"
+        shGithubPush -f "$URL" gh-pages:gh-pages.backup
         shGitSquashShift "$(($COMMIT_LIMIT/2))"
     fi
-    shBuildScriptEval "githubPush" "git push -f $REPO gh-pages:gh-pages"
+    shGithubPush -f "$URL" gh-pages:gh-pages
 )}
 
 shBuildInsideDocker() {(set -e
@@ -452,14 +444,6 @@ shBuildReadme() {(set -e
     npm test --mode-coverage="" --mode-test-case=testCase_buildReadme_default
 )}
 
-shBuildScriptEval() {(set -e
-# this function will print $MODE_BUILD and eval the $SCRIPT
-    MODE_BUILD="${MODE_BUILD:-1}"
-    SCRIPT="$2"
-    shBuildPrint "$SCRIPT"
-    eval "$SCRIPT"
-)}
-
 shBuildTest() {(set -e
 # this function will build the test
     shPasswordEnvUnset
@@ -484,7 +468,7 @@ shDeployGithub() {(set -e
 # this function will deploy the app to $GITHUB_REPO
 # and run a simple curl check for $TEST_URL
 # and test $TEST_URL
-    if [ ! "$GIT_SSH" ]
+    if [ ! "$GITHUB_TOKEN" ]
     then
         return
     fi
@@ -532,7 +516,7 @@ shDeployHeroku() {(set -e
         rm -fr tmp
         return
     fi
-    if [ ! "$GIT_SSH" ]
+    if [ ! "$GITHUB_TOKEN" ]
     then
         return
     fi
@@ -1202,6 +1186,24 @@ shGitSquashShift() {(set -e
     git checkout "$BRANCH"
 )}
 
+shGithubPush() {(set -e
+    # this function will push to github using $GITHUB_TOKEN
+    # http://stackoverflow.com/questions/18027115/committing-via-travis-ci-failing
+    EXIT_CODE=0
+    export MODE_BUILD="${MODE_BUILD:-1}"
+    if [ "$GITHUB_TOKEN" ]
+    then
+        # init github-authentication
+        git config credential.helper "store --file=.git/tmp"
+        printf "https://nobody:$GITHUB_TOKEN@github.com\n" > .git/tmp
+    fi
+    shBuildPrint "git push $@\n"
+    git push $@ || EXIT_CODE=$?
+    # cleanup github-authentication
+    rm -f .git/tmp
+    return "$EXIT_CODE"
+)}
+
 shGithubRepoBaseCreate() {(# set -e
 # this function will create the base github-repo https://github.com/$GITHUB_REPO.git
     if [ ! "$GITHUB_TOKEN" ]
@@ -1240,9 +1242,9 @@ shGithubRepoBaseCreate() {(# set -e
             "$URL" > /dev/null
     fi
     # set default-branch to alpha
-    git push "https://github.com/$GITHUB_REPO.git" alpha
+    shGithubPush "https://github.com/$GITHUB_REPO.git" alpha
     # push all branches
-    git push --all "https://github.com/$GITHUB_REPO.git"
+    shGithubPush --all "https://github.com/$GITHUB_REPO.git"
 )}
 
 shGrep() {(set -e
@@ -1449,11 +1451,6 @@ if (process.env.GITHUB_REPO === undefined && (/^[^\/]+\/[^\/]+\$/).test(value)) 
     mkdir -p "$npm_config_dir_build/coverage.html"
     # init $npm_config_dir_utility2
     shInitNpmConfigDirUtility2 || return $?
-    # init $GIT_SSH
-    if [ "$GIT_SSH_KEY" ]
-    then
-        export GIT_SSH="$npm_config_dir_utility2/git_ssh.sh" || return $?
-    fi
     # init $PATH
     export PATH="$PWD/node_modules/.bin:$PATH" || return $?
     # extract and save the scripts embedded in README.md to tmp/
@@ -2040,8 +2037,8 @@ shNpmTestPublishedList() {(set -e
 shNpmdocRepoListCreate() {(set -e
 # this function will create and push the npmdoc-repo npmdoc/node-npmdoc-$LIST[ii]
 # https://docs.travis-ci.com/api
-    export MODE_BUILD=shTravisRepoListCreate
     EXIT_CODE=0
+    export MODE_BUILD=shTravisRepoListCreate
     LIST="$1"
     LIST2=""
     for NAME in $LIST
@@ -2096,7 +2093,7 @@ shNpmdocRepoListCreate() {(set -e
         git add -f .gitignore .travis.yml
         # git commit and push
         git commit -am "[npmdoc build]"
-        git push -f "https://github.com/$GITHUB_REPO.git" alpha
+        shGithubPush -f "https://github.com/$GITHUB_REPO.git" alpha
     ) &
     done
     for JOB in $(jobs -p)
@@ -2588,8 +2585,8 @@ shTravisRepoIdGet() {(set -e
 shTravisRepoListCreate() {(set -e
 # this function will create the travis-repo $LIST[ii]
 # https://docs.travis-ci.com/api
-    export MODE_BUILD=shTravisRepoListCreate
     EXIT_CODE=0
+    export MODE_BUILD=shTravisRepoListCreate
     LIST="$1"
     ORG="$2"
     shBuildPrint "creating github-repos $LIST ..."
