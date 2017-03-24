@@ -32,7 +32,7 @@ the zero-dependency swiss-army-knife tool for building, testing, and deploying w
 - rename sub-package db-lite -> nedb-lite
 - rename sub-package istanbul-lite -> istanbul-classic
 - rename sub-package jslint-lite -> jslint-classic
-- use options remote credentials during travis-ci build
+- use optional remote-credentials during travis-ci build
 - allow server-side stdout to be streamed to webapps
 - add utility2.middlewareLimit
 - add server stress test using electron
@@ -856,14 +856,6 @@ shBuildCiInternalPre() {(set -e
         shBrowserTest)
     shReadmeTest example.sh
     shNpmTestPublished
-)}
-
-shBuildCiPost() {(set -e
-    return
-)}
-
-shBuildCiPre() {(set -e
-    return
 )}
 
 # run shBuildCi

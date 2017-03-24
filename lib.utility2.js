@@ -643,14 +643,6 @@ shBuildCiInternalPre() {(set -e\n\
     shNpmTestPublished\n\
 )}\n\
 \n\
-shBuildCiPost() {(set -e\n\
-    return\n\
-)}\n\
-\n\
-shBuildCiPre() {(set -e\n\
-    return\n\
-)}\n\
-\n\
 # run shBuildCi\n\
 eval $(utility2 source)\n\
 shBuildCi\n\
