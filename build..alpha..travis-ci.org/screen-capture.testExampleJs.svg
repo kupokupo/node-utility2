@@ -1,5 +1,5 @@
-<svg height="1342" width="720" xmlns="http://www.w3.org/2000/svg">
-<rect height="1342" fill="#555" width="720"></rect>
+<svg height="1326" width="720" xmlns="http://www.w3.org/2000/svg">
+<rect height="1326" fill="#555" width="720"></rect>
 <text fill="#7f7" font-family="Courier New" font-size="12" xml:space="preserve">
 <tspan x="10" y="26"></tspan>
 <tspan x="10" y="42">&gt; electron-lite@2017.3.7 postinstall /tmp/app/node_modules/electron-lite</tspan>
@@ -11,8 +11,8 @@
 <tspan x="10" y="138"></tspan>
 <tspan x="10" y="154">/tmp/app</tspan>
 <tspan x="10" y="170">├── electron-lite@2017.3.7 </tspan>
-<tspan x="10" y="186">└── utility2@2017.3.22  (git://github.com/kaizhu256/node-utility2.git#203db20318a4d0134e562ed71b\</tspan>
-<tspan x="10" y="202">3aee0de4e7c45f)</tspan>
+<tspan x="10" y="186">└── utility2@2017.3.22  (git://github.com/kaizhu256/node-utility2.git#6ac4e54b4c5f4da38676796b54\</tspan>
+<tspan x="10" y="202">e0f1b98a6b181a)</tspan>
 <tspan x="10" y="218"></tspan>
 <tspan x="10" y="234">npm WARN enoent ENOENT: no such file or directory, open '/tmp/app/package.json'</tspan>
 <tspan x="10" y="250">npm WARN app No description</tspan>
@@ -20,68 +20,67 @@
 <tspan x="10" y="282">npm WARN app No README data</tspan>
 <tspan x="10" y="298">npm WARN app No license field.</tspan>
 <tspan x="10" y="314"></tspan>
-<tspan x="10" y="330">[MODE_BUILD=testExampleJs] - 2017-03-24T15:01:06Z - npm-testing /tmp/app</tspan>
+<tspan x="10" y="330">[MODE_BUILD=testExampleJs] - 2017-03-24T15:15:59Z - npm-testing /tmp/app</tspan>
 <tspan x="10" y="346"></tspan>
 <tspan x="10" y="362"></tspan>
 <tspan x="10" y="378">covering $ /home/travis/.nvm/versions/node/v7.7.4/bin/node /tmp/app/example.js</tspan>
 <tspan x="10" y="394">server listening on http-port 8081</tspan>
 <tspan x="10" y="410"></tspan>
-<tspan x="10" y="426">browserTest - created electron entry-page /tmp/app/tmp/electron.15b00d5db510.7ed37aed5c0a9.html</tspan>
+<tspan x="10" y="426">browserTest - created electron entry-page /tmp/app/tmp/electron.15b00e37cb30.87287e38219d9.html</tspan>
 <tspan x="10" y="442"></tspan>
 <tspan x="10" y="458">Xlib:  extension "RANDR" missing on display ":99.0".</tspan>
 <tspan x="10" y="474">Xlib:  extension "RANDR" missing on display ":99.0".</tspan>
-<tspan x="10" y="490">[4804:0324/150107:WARNING:audio_manager.cc(314)] Multiple instances of AudioManager detected</tspan>
-<tspan x="10" y="506">[4804:0324/150107:WARNING:audio_manager.cc(275)] Multiple instances of AudioManager detected</tspan>
-<tspan x="10" y="522">[4826:0324/150107:ERROR:sandbox_linux.cc(343)] InitializeSandbox() called with multiple threads \</tspan>
+<tspan x="10" y="490">[4807:0324/151601:WARNING:audio_manager.cc(314)] Multiple instances of AudioManager detected</tspan>
+<tspan x="10" y="506">[4807:0324/151601:WARNING:audio_manager.cc(275)] Multiple instances of AudioManager detected</tspan>
+<tspan x="10" y="522">[4827:0324/151601:ERROR:sandbox_linux.cc(343)] InitializeSandbox() called with multiple threads \</tspan>
 <tspan x="10" y="538">in process gpu-process. </tspan>
-<tspan x="10" y="554">[4804:0324/150107:ERROR:browser_gpu_channel_host_factory.cc(131)] Failed to create channel.</tspan>
-<tspan x="10" y="570"></tspan>
-<tspan x="10" y="586">browserTest - opened url http://127.0.0.1:8081?modeTest=1</tspan>
-<tspan x="10" y="602"></tspan>
-<tspan x="10" y="618">[4804:0324/150108:INFO:CONSOLE(203)] "server listening on http-port undefined", source: file:///\</tspan>
-<tspan x="10" y="634">tmp/app/tmp/electron.15b00d5db510.7ed37aed5c0a9.html (203)</tspan>
-<tspan x="10" y="650">[4804:0324/150108:INFO:CONSOLE(203)] "[browser test-case 1 of 2 passed] - testCase_ajax_200", so\</tspan>
-<tspan x="10" y="666">urce: file:///tmp/app/tmp/electron.15b00d5db510.7ed37aed5c0a9.html (203)</tspan>
-<tspan x="10" y="682">[4804:0324/150108:INFO:CONSOLE(203)] "[browser test-case 2 of 2 passed] - testCase_ajax_404", so\</tspan>
-<tspan x="10" y="698">urce: file:///tmp/app/tmp/electron.15b00d5db510.7ed37aed5c0a9.html (203)</tspan>
-<tspan x="10" y="714"></tspan>
-<tspan x="10" y="730">browserTest - created screen-capture file:///home/travis/build/kaizhu256/node-utility2/tmp/build\</tspan>
-<tspan x="10" y="746">/screen-capture.testExampleJs.browser..png</tspan>
+<tspan x="10" y="554"></tspan>
+<tspan x="10" y="570">browserTest - opened url http://127.0.0.1:8081?modeTest=1</tspan>
+<tspan x="10" y="586"></tspan>
+<tspan x="10" y="602">[4807:0324/151601:INFO:CONSOLE(203)] "server listening on http-port undefined", source: file:///\</tspan>
+<tspan x="10" y="618">tmp/app/tmp/electron.15b00e37cb30.87287e38219d9.html (203)</tspan>
+<tspan x="10" y="634">[4807:0324/151601:INFO:CONSOLE(203)] "[browser test-case 1 of 2 passed] - testCase_ajax_404", so\</tspan>
+<tspan x="10" y="650">urce: file:///tmp/app/tmp/electron.15b00e37cb30.87287e38219d9.html (203)</tspan>
+<tspan x="10" y="666">[4807:0324/151601:INFO:CONSOLE(203)] "[browser test-case 2 of 2 passed] - testCase_ajax_200", so\</tspan>
+<tspan x="10" y="682">urce: file:///tmp/app/tmp/electron.15b00e37cb30.87287e38219d9.html (203)</tspan>
+<tspan x="10" y="698"></tspan>
+<tspan x="10" y="714">browserTest - created screen-capture file:///home/travis/build/kaizhu256/node-utility2/tmp/build\</tspan>
+<tspan x="10" y="730">/screen-capture.testExampleJs.browser..png</tspan>
+<tspan x="10" y="746"></tspan>
 <tspan x="10" y="762"></tspan>
-<tspan x="10" y="778"></tspan>
-<tspan x="10" y="794">browserTest - exit-code 0 - http://127.0.0.1:8081?modeTest=1</tspan>
+<tspan x="10" y="778">browserTest - exit-code 0 - http://127.0.0.1:8081?modeTest=1</tspan>
+<tspan x="10" y="794"></tspan>
 <tspan x="10" y="810"></tspan>
-<tspan x="10" y="826"></tspan>
-<tspan x="10" y="842">browserTest - merging test-report from /tmp/app/tmp/test-report.testExampleJs.browser.%2F.json</tspan>
-<tspan x="10" y="858"></tspan>
-<tspan x="10" y="874">[node test-case 1 of 1 passed] - testCase_webpage_default</tspan>
-<tspan x="10" y="890">-----------------|-----------|-----------|-----------|-----------|</tspan>
-<tspan x="10" y="906">File             |   % Stmts |% Branches |   % Funcs |   % Lines |</tspan>
-<tspan x="10" y="922">-----------------|-----------|-----------|-----------|-----------|</tspan>
-<tspan x="10" y="938">   app/          |      86.4 |      92.5 |     68.42 |      86.4 |</tspan>
-<tspan x="10" y="954">      example.js |      86.4 |      92.5 |     68.42 |      86.4 |</tspan>
-<tspan x="10" y="970">-----------------|-----------|-----------|-----------|-----------|</tspan>
-<tspan x="10" y="986">All files        |      86.4 |      92.5 |     68.42 |      86.4 |</tspan>
-<tspan x="10" y="1002">-----------------|-----------|-----------|-----------|-----------|</tspan>
-<tspan x="10" y="1018"></tspan>
-<tspan x="10" y="1034">created coverage file:///tmp/app/tmp/build/coverage.html/index.html</tspan>
-<tspan x="10" y="1050"></tspan>
-<tspan x="10" y="1066">-------------------------------------------------------</tspan>
-<tspan x="10" y="1082">| test-report - testExampleJs - browser - / - Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36\</tspan>
-<tspan x="10" y="1098"> (KHTML, like Gecko) Chrome/53.0.2785.143 Electron/1.4.15 Safari/537.36 - 2017-03-24T15:01:08.55\</tspan>
-<tspan x="10" y="1114">0Z</tspan>
-<tspan x="10" y="1130">|      35 ms            0 failed        2 passed      |</tspan>
-<tspan x="10" y="1146">-------------------------------------------------------</tspan>
-<tspan x="10" y="1162">| test-report - testExampleJs - node - linux v7.7.4 - 2017-03-24T15:01:06.842Z</tspan>
-<tspan x="10" y="1178">|    6362 ms            0 failed        1 passed      |</tspan>
-<tspan x="10" y="1194">-------------------------------------------------------</tspan>
-<tspan x="10" y="1210"></tspan>
-<tspan x="10" y="1226">created test-report file:///home/travis/build/kaizhu256/node-utility2/tmp/build/test-report.html</tspan>
+<tspan x="10" y="826">browserTest - merging test-report from /tmp/app/tmp/test-report.testExampleJs.browser.%2F.json</tspan>
+<tspan x="10" y="842"></tspan>
+<tspan x="10" y="858">[node test-case 1 of 1 passed] - testCase_webpage_default</tspan>
+<tspan x="10" y="874">-----------------|-----------|-----------|-----------|-----------|</tspan>
+<tspan x="10" y="890">File             |   % Stmts |% Branches |   % Funcs |   % Lines |</tspan>
+<tspan x="10" y="906">-----------------|-----------|-----------|-----------|-----------|</tspan>
+<tspan x="10" y="922">   app/          |      86.4 |      92.5 |     68.42 |      86.4 |</tspan>
+<tspan x="10" y="938">      example.js |      86.4 |      92.5 |     68.42 |      86.4 |</tspan>
+<tspan x="10" y="954">-----------------|-----------|-----------|-----------|-----------|</tspan>
+<tspan x="10" y="970">All files        |      86.4 |      92.5 |     68.42 |      86.4 |</tspan>
+<tspan x="10" y="986">-----------------|-----------|-----------|-----------|-----------|</tspan>
+<tspan x="10" y="1002"></tspan>
+<tspan x="10" y="1018">created coverage file:///tmp/app/tmp/build/coverage.html/index.html</tspan>
+<tspan x="10" y="1034"></tspan>
+<tspan x="10" y="1050">-------------------------------------------------------</tspan>
+<tspan x="10" y="1066">| test-report - testExampleJs - browser - / - Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36\</tspan>
+<tspan x="10" y="1082"> (KHTML, like Gecko) Chrome/53.0.2785.143 Electron/1.4.15 Safari/537.36 - 2017-03-24T15:16:01.71\</tspan>
+<tspan x="10" y="1098">8Z</tspan>
+<tspan x="10" y="1114">|      31 ms            0 failed        2 passed      |</tspan>
+<tspan x="10" y="1130">-------------------------------------------------------</tspan>
+<tspan x="10" y="1146">| test-report - testExampleJs - node - linux v7.7.4 - 2017-03-24T15:16:00.158Z</tspan>
+<tspan x="10" y="1162">|    6254 ms            0 failed        1 passed      |</tspan>
+<tspan x="10" y="1178">-------------------------------------------------------</tspan>
+<tspan x="10" y="1194"></tspan>
+<tspan x="10" y="1210">created test-report file:///home/travis/build/kaizhu256/node-utility2/tmp/build/test-report.html</tspan>
+<tspan x="10" y="1226"></tspan>
 <tspan x="10" y="1242"></tspan>
-<tspan x="10" y="1258"></tspan>
-<tspan x="10" y="1274">testExampleJs - 0 failed tests</tspan>
+<tspan x="10" y="1258">testExampleJs - 0 failed tests</tspan>
+<tspan x="10" y="1274"></tspan>
 <tspan x="10" y="1290"></tspan>
-<tspan x="10" y="1306"></tspan>
-<tspan x="10" y="1322">[MODE_BUILD=testExampleJs] - 2017-03-24T15:01:15Z - EXIT_CODE - 0</tspan>
+<tspan x="10" y="1306">[MODE_BUILD=testExampleJs] - 2017-03-24T15:16:08Z - EXIT_CODE - 0</tspan>
 </text>
 </svg>
