@@ -1187,7 +1187,7 @@ shGithubPush() {(set -e
     return "$EXIT_CODE"
 )}
 
-shGithubRepoBaseCreate() {(# set -e
+shGithubRepoBaseCreate() {(set -e
 # this function will create the base github-repo https://github.com/$GITHUB_REPO.git
     if [ ! "$GITHUB_TOKEN" ]
     then
@@ -1225,9 +1225,9 @@ shGithubRepoBaseCreate() {(# set -e
             "$URL" > /dev/null
     fi
     # set default-branch to alpha
-    shGithubPush "https://github.com/$GITHUB_REPO.git" alpha
+    shGithubPush "https://github.com/$GITHUB_REPO.git" alpha || true
     # push all branches
-    shGithubPush --all "https://github.com/$GITHUB_REPO.git"
+    shGithubPush --all "https://github.com/$GITHUB_REPO.git" || true
 )}
 
 shGrep() {(set -e
@@ -2622,7 +2622,7 @@ shTravisRepoListCreate() {(set -e
         then
             return
         fi
-        (eval shGithubRepoBaseCreate "$GITHUB_REPO" npmdoc) || true
+        shGithubRepoBaseCreate "$GITHUB_REPO" npmdoc
     ) &
     done
     for JOB in $(jobs -p)
