@@ -6,8 +6,8 @@
 <tspan x="10" y="58">&gt; if [ -f npm_scripts.sh ]; then ./npm_scripts.sh postinstall; fi</tspan>
 <tspan x="10" y="74"></tspan>
 <tspan x="10" y="90">/tmp/app</tspan>
-<tspan x="10" y="106">└── utility2@2017.3.22  (git://github.com/kaizhu256/node-utility2.git#9c181a24c8a16e64a91f536e48\</tspan>
-<tspan x="10" y="122">bdf6762c541792)</tspan>
+<tspan x="10" y="106">└── utility2@2017.3.22  (git://github.com/kaizhu256/node-utility2.git#e632a5c2ab99feaf1107922bad\</tspan>
+<tspan x="10" y="122">962837fe4616fd)</tspan>
 <tspan x="10" y="138"></tspan>
 <tspan x="10" y="154">npm WARN enoent ENOENT: no such file or directory, open '/tmp/app/package.json'</tspan>
 <tspan x="10" y="170">npm WARN app No description</tspan>
@@ -23,6 +23,6 @@
 <tspan x="10" y="330">&gt; server listening on http-port 8081</tspan>
 <tspan x="10" y="346">process exited with code 0</tspan>
 <tspan x="10" y="362"></tspan>
-<tspan x="10" y="378">[MODE_BUILD=testExampleSh] - 2017-03-24T20:19:24Z - EXIT_CODE - 0</tspan>
+<tspan x="10" y="378">[MODE_BUILD=testExampleSh] - 2017-03-24T20:59:36Z - EXIT_CODE - 0</tspan>
 </text>
 </svg>
